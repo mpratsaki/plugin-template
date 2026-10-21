@@ -25,9 +25,11 @@ Edit `src/plugin.config.ts`. The build generates `dist/plugin.yml` from it, so s
 Cider 4 only runs a plugin if its default export has a `pluginKitVersion`. `definePluginContext` from the PluginKit version this template uses (`@ciderapp/pluginkit#cider-4`) adds it for you. If Cider logs `Plugin <identifier> does not specify a pluginKitVersion, cancelling loading.`, the plugin was built with an older PluginKit: update it with `pnpm run update-pluginkit`.
 
 ## How to install after build
-1. In Cider, go to **Settings → Plugins**, open the **⋯** menu and choose **Open AppData folder**. This is the folder Cider reads extensions from (on Windows, `%APPDATA%\sh.cider.dotnet`).
-2. Copy the contents of `dist/` into `plugins/<identifier>/` inside that folder, e.g. `plugins/org.username.plugin-template/`.
-3. Back in **Settings → Plugins**, choose **Refresh plugins list** from the **⋯** menu. Your plugin shows up under **Disabled**: click it and enable it. Cider doesn't run newly installed plugins until you do.
+1. Find the folder Cider reads extensions from. **Open AppData folder** in Cider's settings (under **Extensions** or **Plugins**, depending on your version) opens it, or go there directly:
+    - On Windows, this is `%APPDATA%\sh.cider.dotnet`
+    - On Linux, this is `~/.config/sh.cider.genten`
+2. Copy the contents of `dist/` into `plugins/<identifier>/` inside that folder (create `plugins` if it doesn't exist), e.g. `plugins/org.username.plugin-template/`.
+3. In the same settings page, choose **Refresh** (or **Refresh plugins list**), or restart Cider. Your plugin shows up in the plugins list as disabled: click it and enable it. Cider doesn't run newly installed plugins until you do.
 
 ## Preparing a ZIP package for the Cider Marketplace
 Run `npm run prepare-marketplace`
